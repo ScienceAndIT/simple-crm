@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from crm_app.views import main_page
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'crm_app.views.main_page', name='main_page'),
+    url(r'^$', main_page, name='main_page'),
 ]
