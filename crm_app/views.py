@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+# view for the main page
+def main_page(request):
+    return render(request, 'crm_app/main_page.html')
