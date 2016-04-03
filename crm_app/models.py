@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class CrmUser(models.Model):
     user = models.OneToOneField(User)
+    # new fields can be added here to extend this model
 
     def __str__(self):
         return 'Profile of user: {}'.format(self.user.username)
