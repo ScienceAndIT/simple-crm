@@ -14,6 +14,8 @@
     <script src="{% static 'js/bootstrap.min.js'%}"></script>
     <!-- Custom styles for this template -->
     <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+    <!--Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
@@ -34,15 +36,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Simple CRM</a>
+          <a class="navbar-brand" href="{% url 'crm_app.views.main_page' %}">Simple CRM</a>
         </div>
+        {% if user.is_authenticated %}
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">Users</a></li>
             <li><a href="#contact">Companies</a></li>
           </ul>
         </div><!--/.nav-collapse -->
+        {% endif %}
       </div>
     </nav>
 
