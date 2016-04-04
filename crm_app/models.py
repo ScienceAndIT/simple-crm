@@ -27,11 +27,11 @@ class Company(models.Model):
     owner = models.CharField(max_length=50, blank=False)
     sector = models.CharField(max_length=10,
                               choices=SECTOR_CHOICES,
-                              default='it')
+                              default='IT')
     number_of_employees = models.CharField(max_length=10,
                                            choices=NUMBER_OF_EMPLOYEES_CHOICES,
-                                           default='medium')
-    added_by = models.CharField(max_length=50, default='')
+                                           default='21-50')
+    added_by = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
