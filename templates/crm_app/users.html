@@ -23,9 +23,10 @@
         {% endfor %}
     </tbody>
   </table>
-  <a href="{% url 'add_user' %}" class="btn btn-info btn-lg" role="button">Add user <span class="glyphicon glyphicon-plus"></span>
-  </a>
-  </button>
+  {% if request.user.is_staff %}
+    <a href="{% url 'add_user' %}" class="btn btn-info btn-lg" role="button">Add user <span class="glyphicon glyphicon-plus"></span></a>
+  {% endif %}
+  
   <hr>
 
   <!--Pagination-->
