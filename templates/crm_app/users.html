@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load add_css %}
+{% block title %}Adding user{% endblock %}
+{% block content %}
 
-</body>
-</html>
+<div class="container">
+  <h2 style="text-align: center";>Users in system</h2><br><br>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Added by</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for single_user in users %}
+            <tr>
+                <td>{{ single_user.username }}</td>
+                <td>{{ single_user.first_name }}</td>
+                <td>{{ single_user.last_name }}</td>
+                <td>{{ request.user.username }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'add_user' %}" class="btn btn-info btn-lg" role="button">Add user <span class="glyphicon glyphicon-plus"></span>
+  </a>
+  </button>
+  <hr>
+
+  <!--Pagination-->
+    <ul class="pager">
+        {% with page=users %}
+            {% if page.has_previous %}
+            <li class="previous">
+                <a href="?page={{ page.previous_page_number }}">&larr; Previous</a>
+            </li>
+            {% endif %}
+            <span class="current">
+                Page {{ page.number }} of {{ page.paginator.num_pages }}
+            </span>
+            {% if page.has_next %}
+            <li class="next">
+                <a href="?page={{ page.next_page_number }}">&rarr; Next</a>
+            </li>
+            {% endif %}
+        {% endwith %}
+    </ul>
+</div> <!-- .container -->
+
+{% endblock content %}

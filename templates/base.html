@@ -45,7 +45,7 @@
         {% if user.is_authenticated %}
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'login' %}">Users</a></li>
+            <li><a href="{% url 'users_view' %}">Users</a></li>
             <li><a href="{% url 'companies' %}" class="active">Companies</a></li>
             <li><a href="{% url 'logout' %}?next=/">Log out, {{ request.user.first_name }}</a></li>
           </ul>

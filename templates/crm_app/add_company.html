@@ -23,32 +23,29 @@
         <div class="modal-body">
           <form action="." method="post" enctype="multipart/form-data">
             <div class="form-group">
-              {{ user_form.username.errors }}
-              <label for="id_username"><span class="glyphicon glyphicon-user"></span> Username</label>
-              {{ user_form.username|addcss:"form-control" }}
-
+              {{ company_form.name.errors }}
+              <label for="id_name"><span class="glyphicon glyphicon-usd"></span> Name of the company</label>
+              {{ company_form.name|addcss:"form-control" }}
             </div>
             <div class="form-group">
-                {{ user_form.first_name.errors }}
-                <label for="id_first_name"><span class="glyphicon glyphicon-user"></span> First name</label>
-              {{ user_form.first_name|addcss:"form-control" }}
+                {{ company_form.owner.errors }}
+                <label for="id_owner"><span class="glyphicon glyphicon-briefcase"></span> Owner</label>
+              {{ company_form.owner|addcss:"form-control" }}
             </div>
             <div class="form-group">
-                {{ user_form.last_name.errors }}
-                <label for="id_last_name"><span class="glyphicon glyphicon-user"></span> Last name</label>
-              {{ user_form.last_name|addcss:"form-control" }}
+                {{ company_form.sector.errors }}
+                <label for="id_sector"><span class="glyphicon glyphicon-wrench"></span> Sector</label>
+              {{ company_form.sector|addcss:"form-control" }}
             </div>
             <div class="form-group">
-              {{ user_form.password.errors }}
-              <label for="id_password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              {{ user_form.password|addcss:"form-control" }}
+              {{ company_form.number_of_employees.errors }}
+              <label for="id_number_of_employees"><span class="glyphicon glyphicon-cloud"></span> Number of employees</label>
+              {{ company_form.number_of_employees|addcss:"form-control" }}
             </div>
             {% csrf_token %}
-            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Save user</button>
+            <input type="hidden" name="added_by" value="{{ request.user.username }}" />
+            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Save company</button>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button id="anuluj" type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
         </div>
       </div>
     </div>

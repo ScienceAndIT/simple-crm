@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Company added{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <h1>Company <b>{{ new_company.name }}</b> has been added!</h1>
+            <h2>Owner - <b>{{ new_company.owner }}</b> </h2>
+            <h2>Sector - <b>{{ new_company.sector }}</b></h2>
+            <h2>Number of employees - <b>{{ new_company.number_of_employees }}</b></h2>
+            <h4>Go to the <a href="{% url 'companies %}">companies list</a>!</h4>
+        </div>
+    </div>
+
+{% endblock %}

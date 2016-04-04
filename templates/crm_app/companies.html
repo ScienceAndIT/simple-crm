@@ -1,33 +1,55 @@
 {% extends "base.html" %}
-{% load staticfiles%}
+{% load add_css %}
+{% block title %}Adding company{% endblock %}
 {% block content %}
-    <div class="container">
-      <div class="starter-template">
-        <h1>Welcome to simple CRM system</h1>
-        <p class="lead">version 0.1.0, by Artur</p>
-      </div>
-      <div class="row">
-      <div class="modal-content col-md-8 col-md-offset-2">
-        <div class="modal-header">
-          <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Logging to CRM system</h4>
-        </div>
-        <div class="modal-body">
-          <form action="" method="post">
-            <div class="form-group">
-              <label for="id_username"><span class="glyphicon glyphicon-user"></span> Ushghger</label>
-              <input name="username" type="text" class="form-control" id="id_username" placeholder="Enter your username">
-            </div>
-            <div class="form-group">
-              <label for="id_password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input name="password" type="password" class="form-control" id="id_password" placeholder="Enter your password">
-            </div>
-            {% csrf_token %}
-            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-log-in"></span> Log in</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-    </div><!-- /.container -->
+
+<div class="container">
+  <h2 style="text-align: center";>Companies in system</h2><br><br>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Sector</th>
+        <th>Number of employees</th>
+        <th>Added by</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.owner }}</td>
+                <td>{{ company.sector }}</td>
+                <td>{{ company.number_of_employees }}</td>
+                <td>{{ company.added_by }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'add_company' %}" class="btn btn-info btn-lg" role="button">Add company <span class="glyphicon glyphicon-plus"></span>
+  </a>
+  </button>
+  <hr>
+
+  <!--Pagination-->
+    <ul class="pager">
+        {% with page=companies %}
+            {% if page.has_previous %}
+            <li class="previous">
+                <a href="?page={{ page.previous_page_number }}">&larr; Previous</a>
+            </li>
+            {% endif %}
+            <span class="current">
+                Page {{ page.number }} of {{ page.paginator.num_pages }}
+            </span>
+            {% if page.has_next %}
+            <li class="next">
+                <a href="?page={{ page.next_page_number }}">&rarr; Next</a>
+            </li>
+            {% endif %}
+        {% endwith %}
+    </ul>
+</div> <!-- .container -->
+
 {% endblock content %}
