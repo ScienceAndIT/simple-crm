@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from . forms import CompanyForm, CrmUserForm
+from . forms import CompanyForm, CrmUserForm, CrmUserForm2
 from django.contrib.auth.models import User
 from .models import Company
 
@@ -65,6 +65,7 @@ def add_company_view(request):
 def add_user_view(request):
     if request.method == 'POST':
         user_form = CrmUserForm(request.POST)
+        user_adder = request.user.username
         if user_form.is_valid():
             # new user (not saved yet)
             new_user = user_form.save(commit=False)
@@ -76,5 +77,7 @@ def add_user_view(request):
                           'crm_app/add_user_done.html', {'new_user': new_user})
     else:
         user_form = CrmUserForm()
+        user_adder = request.user.username
     return render(request, 'crm_app/add_user.html',
-                  {'user_form': user_form})
+                  {'user_form': user_form,
+                   'user_adder': user_adder})
