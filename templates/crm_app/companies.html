@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container">
-  <h2 style="text-align: center";>Companies in system</h2><br><br>
+  <h2 style="text-align: center";>Companies in CRM system</h2><br><br>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -12,7 +12,9 @@
         <th>Owner</th>
         <th>Sector</th>
         <th>Number of employees</th>
-        <th>Added by</th>
+        {% if request.user.is_staff %}
+            <th>Added by</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -22,7 +24,9 @@
                 <td>{{ company.owner }}</td>
                 <td>{{ company.sector }}</td>
                 <td>{{ company.number_of_employees }}</td>
-                <td>{{ company.added_by }}</td>
+                {% if request.user.is_staff %}
+                    <td>{{ company.added_by }}</td>
+                {% endif %}
             </tr>
         {% endfor %}
     </tbody>
