@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Company, CrmUser
+from .models import Company
 
-admin.site.register(Company)
-admin.site.register(CrmUser)
+
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ['name', 'owner', 'sector', 'number_of_employees']
+
+admin.site.register(Company, CompanyAdmin)
