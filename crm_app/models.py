@@ -23,7 +23,7 @@ class Company(models.Model):
         ('51-100', '51-100'),
         ('>100', '>100')
     )
-    name = models.CharField(max_length=100, blank=False)
+    name = models.CharField(max_length=100, blank=False, unique=True)
     owner = models.CharField(max_length=50, blank=False)
     sector = models.CharField(max_length=10,
                               choices=SECTOR_CHOICES,
