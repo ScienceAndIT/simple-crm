@@ -145,7 +145,11 @@ try:
 except ImportError:
     pass
 
-# get_absolute_url() for User model
+"""
+get_absolute_url() for User model
+Thanks to http://stackoverflow.com/questions/2328736/override-default-get-absolute-url-on-user-objects
+"""
+
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: "details/user/%s/" % u.pk,
 }
