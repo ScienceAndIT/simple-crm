@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="container">
-    <div class="row text-justify">
-            <h1>Details of the user: <b>{{ my_user.first_name }}</b></h1>
+    <div class="row text-center">
+            <h1>Details of the user: <b>{{ my_user.username }}</b></h1>
             <h2>First name - <b>{{ my_user.first_name }}</b> </h2>
             <h2>Last name - <b>{{ my_user.last_name }}</b></h2>
             <h4>Go to the <a href="{% url 'users_view' %}">users list</a>!</h4>
