@@ -144,3 +144,8 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+# get_absolute_url() for User model
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: "details/user/%s/" % u.pk,
+}
