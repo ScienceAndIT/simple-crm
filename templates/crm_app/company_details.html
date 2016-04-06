@@ -9,7 +9,10 @@
             <h2>Owner - <b>{{ my_company.owner }}</b> </h2>
             <h2>Sector - <b>{{ my_company.sector }}</b></h2>
             <h2>Employees - <b>{{ my_company.number_of_employees }}</b></h2>
+            <hr>
+                <a href="{% url 'company_delete' my_company.pk %}" class="btn btn-danger btn-lg" role="button">Delete company <span class="glyphicon glyphicon-remove"></span></a>
+            <hr>
             <h4>Go to the <a href="{% url 'companies' %}">companies list</a>!</h4>
     </div>
 </div>
-{% endblock content %}}
+{% endblock content %}

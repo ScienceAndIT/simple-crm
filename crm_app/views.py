@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from . forms import CompanyForm, CrmUserForm
 from django.contrib.auth.models import User
-from .models import Company, CrmUser
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic.edit import DeleteView
+from django.shortcuts import render, get_object_or_404, redirect
+from . forms import CompanyForm, CrmUserForm
+from .models import Company
 
 
 # view all companies
@@ -93,3 +95,23 @@ def add_user_view(request):
     return render(request, 'crm_app/add_user.html',
                   {'user_form': user_form,
                    'user_adder': user_adder})
+
+
+# delete company
+@login_required
+def company_delete(request, pk):
+    company_to_delete = get_object_or_404(Company, pk=pk)
+    if request.method == 'POST':
+        company_to_delete.delete()
+        return redirect('companies')
+    return render(request, 'crm_app/company_confirm_delete.html', {'object': company_to_delete})
+
+
+# delete user
+@login_required
+def user_delete(request, pk):
+    user_to_delete = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        user_to_delete.delete()
+        return redirect('users_view')
+    return render(request, 'crm_app/user_confirm_delete.html', {'object': user_to_delete})
