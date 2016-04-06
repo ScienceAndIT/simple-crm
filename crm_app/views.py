@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from . forms import CompanyForm, CrmUserForm, CrmUserForm2
+from . forms import CompanyForm, CrmUserForm
 from django.contrib.auth.models import User
-from .models import Company
+from .models import Company, CrmUser
 
 
 # view all companies
@@ -42,6 +42,18 @@ def users_view(request):
     return render(request, 'crm_app/users.html',
                   {'page': page,
                    'users': users})
+
+
+# details of the user
+def user_details(request, pk):
+    my_user = get_object_or_404(User, pk=pk)
+    return render(request, 'crm_app/user_details.html', {'my_user': my_user})
+
+
+# details of the company
+def company_details(request, pk):
+    my_company = get_object_or_404(Company, pk=pk)
+    return render(request, 'crm_app/company_details.html', {'my_company': my_company})
 
 
 # add another company
