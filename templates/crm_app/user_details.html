@@ -8,9 +8,11 @@
             <h1>Details of the user: <b>{{ my_user.username }}</b></h1>
             <h2>First name - <b>{{ my_user.first_name }}</b> </h2>
             <h2>Last name - <b>{{ my_user.last_name }}</b></h2>
+            {% if request.user.username != my_user.username %}
             <hr>
                 <a href="{% url 'user_delete' my_user.pk %}" class="btn btn-danger btn-lg" role="button">Delete user <span class="glyphicon glyphicon-remove"></span></a>
             <hr>
+            {% endif %}
             <h4>Go to the <a href="{% url 'users_view' %}">users list</a>!</h4>
     </div>
 </div>
