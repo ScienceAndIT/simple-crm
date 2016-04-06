@@ -24,7 +24,7 @@
     </tbody>
   </table>
   {% if request.user.is_staff %}
-    <a href="{% url 'add_user' %}" class="btn btn-info btn-lg" role="button">Add user <span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'add_user' %}" class="btn btn-info btn-lg adder" role="button">Add user <span class="glyphicon glyphicon-plus"></span></a>
   {% endif %}
 
   <hr>
@@ -34,7 +34,7 @@
         {% with page=users %}
             {% if page.has_previous %}
             <li class="previous">
-                <a href="?page={{ page.previous_page_number }}">&larr; Previous</a>
+                <a href="?page={{ page.previous_page_number }}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-arrow-left"></span>Previous</a>
             </li>
             {% endif %}
             <span class="current">
@@ -42,7 +42,7 @@
             </span>
             {% if page.has_next %}
             <li class="next">
-                <a href="?page={{ page.next_page_number }}">&rarr; Next</a>
+                <a href="?page={{ page.next_page_number }}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-arrow-right"></span> Next</a>
             </li>
             {% endif %}
         {% endwith %}

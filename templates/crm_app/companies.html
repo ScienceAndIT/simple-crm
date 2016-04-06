@@ -31,9 +31,7 @@
         {% endfor %}
     </tbody>
   </table>
-  <a href="{% url 'add_company' %}" class="btn btn-info btn-lg" role="button">Add company <span class="glyphicon glyphicon-plus"></span>
-  </a>
-  </button>
+  <a href="{% url 'add_company' %}" class="btn btn-info btn-lg adder" role="button">Add company <span class="glyphicon glyphicon-plus"></span></a>
   <hr>
 
   <!--Pagination-->
@@ -41,7 +39,7 @@
         {% with page=companies %}
             {% if page.has_previous %}
             <li class="previous">
-                <a href="?page={{ page.previous_page_number }}">&larr; Previous</a>
+                <a href="?page={{ page.previous_page_number }}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-arrow-left"></span>Previous</a>
             </li>
             {% endif %}
             <span class="current">
@@ -49,7 +47,7 @@
             </span>
             {% if page.has_next %}
             <li class="next">
-                <a href="?page={{ page.next_page_number }}">&rarr; Next</a>
+                <a href="?page={{ page.next_page_number }}" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-arrow-right"></span> Next</a>
             </li>
             {% endif %}
         {% endwith %}

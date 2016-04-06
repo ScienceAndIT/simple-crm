@@ -10,3 +10,11 @@ body {
   font-size: xx-large;
   text-align: center;
 }
+
+.pager li>a {
+  background-color: green;
+}
+
+.adder {
+  margin-left: 40%;
+}
