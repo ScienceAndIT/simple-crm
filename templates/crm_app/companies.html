@@ -14,6 +14,7 @@
         <th>Number of employees</th>
         {% if request.user.is_staff %}
             <th>Added by</th>
+            <th>Details</th>
         {% endif %}
       </tr>
     </thead>
@@ -26,6 +27,7 @@
                 <td>{{ company.number_of_employees }}</td>
                 {% if request.user.is_staff %}
                     <td>{{ company.added_by }}</td>
+                    <td><a href="{{ company.get_absolute_url }}">Details</a></td>
                 {% endif %}
             </tr>
         {% endfor %}

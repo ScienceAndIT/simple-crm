@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Company details{% endblock %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-justify">
+            <h1>Details of the company: <b>{{ my_company.name }}</b></h1>
+            <h2>Owner - <b>{{ my_company.owner }}</b> </h2>
+            <h2>Sector - <b>{{ my_company.sector }}</b></h2>
+            <h2>Employees - <b>{{ my_company.number_of_employees }}</b></h2>
+            <h4>Go to the <a href="{% url 'companies' %}">companies list</a>!</h4>
+    </div>
+</div>
+{% endblock content %}}

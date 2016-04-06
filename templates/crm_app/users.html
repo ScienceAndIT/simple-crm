@@ -11,6 +11,9 @@
         <th>Username</th>
         <th>First Name</th>
         <th>Last Name</th>
+        {% if request.user.is_staff %}
+            <th>Details</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -19,6 +22,9 @@
                 <td>{{ single_user.username }}</td>
                 <td>{{ single_user.first_name }}</td>
                 <td>{{ single_user.last_name }}</td>
+                {% if request.user.is_staff %}
+                    <th><a href="{{ single_user.get_absolute_url }}">Details</a></th>
+                {% endif %}
             </tr>
         {% endfor %}
     </tbody>
