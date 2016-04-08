@@ -104,7 +104,9 @@ def company_delete(request, pk):
     if request.method == 'POST':
         company_to_delete.delete()
         return redirect('companies')
-    return render(request, 'crm_app/company_confirm_delete.html', {'object': company_to_delete})
+    return render(request,
+                  'crm_app/company_confirm_delete.html',
+                  {'object': company_to_delete})
 
 
 # delete user
@@ -114,4 +116,26 @@ def user_delete(request, pk):
     if request.method == 'POST':
         user_to_delete.delete()
         return redirect('users_view')
-    return render(request, 'crm_app/user_confirm_delete.html', {'object': user_to_delete})
+    return render(request,
+                  'crm_app/user_confirm_delete.html',
+                  {'object': user_to_delete})
+
+
+# edit details of the user
+@login_required
+def user_edit(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == "POST":
+        form = CrmUserForm(request.POST, instance=user)
+        if form.is_valid():
+            #user = form.save(commit=False)
+            #user.author = request.user
+            form.save()
+            return redirect('users_view')
+        else:
+            return redirect('companies')
+    else:
+        form = CrmUserForm(instance=user)
+    return render(request,
+                  'crm_app/user_edit.html',
+                  {'form': form})

@@ -9,13 +9,15 @@ class CrmUserForm(forms.ModelForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'password')
 
-
+"""
+# for later
 class CrmUserForm2(forms.ModelForm):
 
     class Meta:
         model = CrmUser
         exclude = ['user']
         widgets = {'added_by': forms.HiddenInput()}
+"""
 
 
 class CompanyForm(forms.ModelForm):

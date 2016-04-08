@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^users/$', views.users_view, name='users_view'),
     url(r'^add-user/$', views.add_user_view, name='add_user'),
     url(r'^delete-user/(?P<pk>\d+)/$', views.user_delete, name='user_delete'),
+    url(r'^user/(?P<pk>[0-9]+)/edit/$', views.user_edit, name='user_edit'),
     url(r'^password-change/$',
         'django.contrib.auth.views.password_change',
         name='password_change'),
