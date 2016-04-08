@@ -12,6 +12,9 @@ class CrmUser(models.Model):
     def __str__(self):
         return self.user.username
 
+    def __unicode__(self):
+        return self.user.username
+
 
 class Company(models.Model):
     SECTOR_CHOICES = (
@@ -36,6 +39,9 @@ class Company(models.Model):
     added_by = models.CharField(max_length=50)
 
     def __str__(self):
+        return self.name
+
+    def __unicode__(self):
         return self.name
 
     def get_absolute_url(self):
