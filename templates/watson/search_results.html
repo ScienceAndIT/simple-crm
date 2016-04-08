@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load watson %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h1 class="text-center">Search results{% if query %} for &ldquo;<b>{{query}}</b>&rdquo;:{% endif %}</h1>
+        {% if search_results %}
+            {% search_results search_results %}
+        {% else %}
+            {% if query %}
+                <h2><em>No results to display!</em></h2>
+                <h2><em>Try to enter less specific phrase!</em></h2>
+            {% else %}
+                <h2><em>You didn't enter phrase to search for!</em></h2>
+            {% endif %}
+        {% endif %}
+    </div>
+    <h4 class="text-center">Go to the <a href="{% url 'companies' %}">companies list</a>!</h4>
+</div>
+{% endblock %}}

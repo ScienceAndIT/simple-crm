@@ -21,5 +21,6 @@ from django.contrib.auth.views import login
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', login, name='login'),
-    url(r'^crm/', include('crm_app.urls'))
-]
+    url(r'^crm/', include('crm_app.urls')),
+    url(r'^search/', include('watson.urls', namespace='watson')),
+        ]

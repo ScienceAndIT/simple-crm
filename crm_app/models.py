@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
+from watson import search as watson
 
 
 class CrmUser(models.Model):
@@ -39,3 +40,6 @@ class Company(models.Model):
 
     def get_absolute_url(self):
         return reverse('company_details', args=[self.pk])
+
+# preparing watson to search in Company's objects
+#watson.register(Company)
